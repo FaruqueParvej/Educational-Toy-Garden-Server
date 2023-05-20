@@ -26,7 +26,19 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-const productsCollection=client.db('educational-toy-garden').collection('products');
+    const productsCollection=client.db('educational-toy-garden').collection('products');
+
+
+    
+
+
+    app.post('/products',async(req,res)=>{
+      const newToy=req.body;
+      console.log(newToy)
+      const result = await productsCollection.insertOne(newToy)
+      res.send(result)
+    })
+
 
 app.get('/products',async(req,res)=>{
     const cursor = productsCollection.find();
