@@ -5,7 +5,7 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// middleware
+// middleware is here
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.h2th6lu.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -53,7 +53,7 @@ async function run() {
       const result = await productsCollection.findOne(query);
       res.send(result);
     });
-    // update
+    // update is here
     app.patch("/product/:id", async (req, res) => {
       const id = req.params.id;
       console.log(req.body);
