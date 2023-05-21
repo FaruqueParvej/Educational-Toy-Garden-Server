@@ -53,6 +53,18 @@ async function run() {
       const result = await productsCollection.findOne(query);
       res.send(result);
     });
+    // update
+    app.patch("/product/:id", async (req, res) => {
+      const id = req.params.id;
+      console.log(req.body);
+      console.log(id);
+      const query = { _id: new ObjectId(id) };
+
+      const result = await productsCollection.updateOne(query, {
+        $set: req.body,
+      });
+      res.send(result);
+    });
 
     // Delete
     app.delete("/product/:id", async (req, res) => {
